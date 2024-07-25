@@ -118,26 +118,28 @@ int main(void)
   {
 		//调试串口
 		HAL_Delay(50);
-		//当接收的数据长度大于一个字符时，打印输出，交换打印uart1->uart2
+		
 		if(usart1_rcv_len>=1)
 		{
-			HAL_UART_Transmit(&huart2,(uint8_t *)usart1_rec_buffer,usart1_rcv_len,0xff);	//发送接收到的数据
+			HAL_UART_Transmit(&huart3,(uint8_t *)usart1_rec_buffer,usart1_rcv_len,0xff);	//发送接收到的数据
 			memset(usart1_rec_buffer,0,usart1_rcv_len);																		//清除接收的数据
 			usart1_rcv_len = 0;																														//清空计数
 		}
+		//当接收的数据长度大于一个字符时，打印输出，交换打印uart2->uart1
 		//4G模组串口
 		HAL_Delay(50);
 		if(usart2_rcv_len>=1)
 		{
-			HAL_UART_Transmit(&huart1,(uint8_t *)usart2_rec_buffer,usart2_rcv_len,0xff);	//发送接收到的数据
+			HAL_UART_Transmit(&huart2,(uint8_t *)usart2_rec_buffer,usart2_rcv_len,0xff);	//发送接收到的数据
 			memset(usart2_rec_buffer,0,usart2_rcv_len);																		//清除接收的数据
 			usart2_rcv_len = 0;																														//清空计数
 		}
+		//当接收的数据长度大于一个字符时，打印输出，交换打印uart3->uart1
 		//传感器串口
 		HAL_Delay(50);
 		if(usart3_rcv_len>=1)
 		{
-			HAL_UART_Transmit(&huart3,(uint8_t *)usart3_rec_buffer,usart3_rcv_len,0xff);	//发送接收到的数据
+			HAL_UART_Transmit(&huart1,(uint8_t *)usart3_rec_buffer,usart3_rcv_len,0xff);	//发送接收到的数据
 			memset(usart3_rec_buffer,0,usart3_rcv_len);																		//清除接收的数据
 			usart3_rcv_len = 0;																														//清空计数
 		}
