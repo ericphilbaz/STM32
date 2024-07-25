@@ -106,6 +106,9 @@ int main(void)
 	HAL_UART_Receive_IT(&huart2, (uint8_t *)&RxBuffer2, 1);	//使能中断
 	HAL_UART_Receive_IT(&huart3, (uint8_t *)&RxBuffer3, 1);	//使能中断
 	
+	// uart1 RX->PA10 Tx->PA9
+	// uart2 RX->PA3  Tx->PA2
+	// uart3 RX->PB11 Tx->PB10
 	
   /* USER CODE END 2 */
 
@@ -135,8 +138,8 @@ int main(void)
 		if(usart3_rcv_len>=1)
 		{
 			HAL_UART_Transmit(&huart3,(uint8_t *)usart3_rec_buffer,usart3_rcv_len,0xff);	//发送接收到的数据
-			memset(usart2_rec_buffer,0,usart2_rcv_len);																		//清除接收的数据
-			usart2_rcv_len = 0;																														//清空计数
+			memset(usart3_rec_buffer,0,usart3_rcv_len);																		//清除接收的数据
+			usart3_rcv_len = 0;																														//清空计数
 		}
     /* USER CODE END WHILE */
 
