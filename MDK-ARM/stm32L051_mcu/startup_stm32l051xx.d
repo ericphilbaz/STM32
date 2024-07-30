@@ -1,0 +1,1 @@
+stm32l051_mcu\startup_stm32l051xx.o: startup_stm32l051xx.s
